@@ -93,6 +93,6 @@ stages:
                 ConnectionType: 'AzureRM'
                 azureSubscription: 'tailspin-space-game-rg'
                 appType: 'webAppLinux'
-                WebAppName: 'multistage-pipeline-spacegame'
+                WebAppName: '${WebAppNameDev)'
                 packageForLinux: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
                 RuntimeStack: 'DOTNETCORE|6.0'
