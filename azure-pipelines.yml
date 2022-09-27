@@ -88,18 +88,18 @@ stages:
             steps:
             - download: current
               artifact: drop
-            # - task: AzureRmWebAppDeployment@4
-            #   displayName: 'Azure App Service Deploy: website'
-            #   inputs:
-            #     azureSubscription: 'Resource Manager - Tailspin - Space Game'
-            #     appName: '$(WebAppNameDev)'
-            #     appType: webAppLinux
-            #     package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
-            - task: AzureRmWebAppDeployment@4
+            - task: AzureWebApp@1
+              displayName: 'Azure App Service Deploy: website'
               inputs:
-                ConnectionType: 'AzureRM'
-                azureSubscription: 'tailspin-space-game12'
-                appType: 'webAppLinux'
-                WebAppName: 'tailspin-space-game12'
-                packageForLinux: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
-                RuntimeStack: 'DOTNETCORE|6.0'
+                azureSubscription: 'Resource Manager - Tailspin - Space Game'
+                appName: '$(WebAppNameDev)'
+                appType: webAppLinux
+                package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+            # - task: AzureRmWebAppDeployment@4
+            #   inputs:
+            #     ConnectionType: 'AzureRM'
+            #     azureSubscription: 'tailspin-space-game12'
+            #     appType: 'webAppLinux'
+            #     WebAppName: 'tailspin-space-game12'
+            #     packageForLinux: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+            #     RuntimeStack: 'DOTNETCORE|6.0'
