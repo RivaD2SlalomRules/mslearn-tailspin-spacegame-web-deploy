@@ -1,6 +1,6 @@
 trigger:
   - '*'
-  
+
 variables:
     buildConfiguration: 'Release'
     releaseBranchName: 'release'
@@ -96,3 +96,10 @@ stages:
                 WebAppName: 'tailspin-space-game12'
                 packageForLinux: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
                 RuntimeStack: 'DOTNETCORE|6.0'
+            - task: AzureWebApp@1
+              inputs:
+                azureSubscription: a7953df0-5e61-4b3d-88c7-9a49b81abb1c
+                appType: 'webAppLinux'
+                appName: 'tailspin-space-game-web-dev-20712'
+                package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+                runtimeStack: 'DOTNETCORE|6.0'
