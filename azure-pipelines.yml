@@ -91,7 +91,7 @@ stages:
             - task: AzureRmWebAppDeployment@4
               inputs:
                 ConnectionType: 'AzureRM'
-                azureSubscription: 'tailspin-space-game-rg'
+                azureSubscription: 'multistage-pipeline-spacegame'
                 appType: 'webAppLinux'
                 WebAppName: '${WebAppNameDev)'
                 packageForLinux: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
